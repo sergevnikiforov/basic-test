@@ -10,7 +10,7 @@
          var elems = document.querySelectorAll("[data-p]");
          console.log(this);
          for (var i = 0; i < elems.length; i++) {
-
+             alert(elems[i].style.color);
              if (this.getAttribute("data-btn") == "p" + toString(i)) {
                  elems[i].classList.remove("hidden");
              } else if (this.getAttribute("data-btn") != elems[i].getAttribute("data-p")) {
