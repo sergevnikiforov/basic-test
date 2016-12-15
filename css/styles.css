@@ -114,7 +114,8 @@ body {
   .main p {
     font-size: 1rem;
     line-height: 1.2;
-    color: black; }
+    color: darkblue;
+    transition: 1s all; }
 @-webkit-keyframes example {
   0% {
     color: black; }
@@ -129,8 +130,14 @@ body {
     color: blue; }
   100% {
     color: black; } }
+.show {
+  display: block;
+  transition: 1s all;
+  color: #e0ccb1; }
+
 .hidden {
-  display: none; }
+  display: none;
+  transition: 1s all; }
 
 /* Adaptive */
 @media only screen and (min-width: 600px) and (max-width: 768px) {

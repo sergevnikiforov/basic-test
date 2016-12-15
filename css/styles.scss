@@ -153,7 +153,8 @@ body {
     p {
         font-size: 1rem;
         line-height: 1.2;
-        color: black;
+        color: darkblue;
+        transition: 1s all;
     }
     @-webkit-keyframes example {
         0% {
@@ -179,8 +180,15 @@ body {
     }
 }
 
+.show {
+    display: block;
+    transition: 1s all;
+    color: lighten($color1, 10%);
+}
+
 .hidden {
     display: none;
+    transition: 1s all;
 }
 
 
