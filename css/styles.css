@@ -101,10 +101,12 @@ body {
   .main .menu li {
     width: 100%;
     border: 1px solid grey;
-    background-color: #cfe2f3; }
+    background-color: #cfe2f3;
+    transition: 2s all; }
   .main .menu li:hover {
     border-right: none;
-    background-color: #d9d2e9; }
+    background-color: #d9d2e9;
+    transition: 2s all; }
   .main .menu li a {
     padding: 10px;
     width: 100%;
@@ -114,9 +116,9 @@ body {
     font-size: 2rem; }
   .main p {
     font-size: 1rem;
-    line-height: 1.2;
+    line-height: 1.3;
     color: darkblue;
-    transition: 1s all; }
+    transition: 2s all; }
 @-webkit-keyframes example {
   0% {
     color: black; }
