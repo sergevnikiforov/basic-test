@@ -1,0 +1,28 @@
+@mixin flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* General */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: lighten($color1, 20%);
+    @include flexColumn;
+    font-family: 'Playfair Display', serif;
+}
+
+.wrapper {
+    @include Shadow;
+    @include flexColumn;
+    max-width: $wrapperWidth;
+    margin: 0 auto;
+}
