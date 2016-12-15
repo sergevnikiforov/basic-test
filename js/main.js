@@ -12,11 +12,10 @@
          for (var i = 0; i < elems.length; i++) {
              elems[i].setAttribute('style', 'color: crimson; transition: 2s all;');
              elems[i].classList.add('show');
-             if (this.getAttribute("data-btn") == "p" + i) {
+             if (this.getAttribute("data-btn") == "a" + i) {
                  elems[i].classList.remove("hidden");
              } else if (this.getAttribute("data-btn") != elems[i].getAttribute("data-p")) {
                  elems[i].classList.add("hidden");
-                 elems[i].classList.remove('show');
              } else {
                  elems[i].classList.remove("hidden");
              }
