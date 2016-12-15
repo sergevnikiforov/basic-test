@@ -127,5 +127,50 @@ body {
     color: blue; }
   100% {
     color: black; } }
+.clear {
+  clear: both; }
+
+.hidden {
+  display: none;
+  transition: 2s all; }
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  html {
+    font-size: 12px; }
+
+  .wrapper {
+    width: 100%; }
+
+  .main .right {
+    padding: 3%; }
+
+  .right p {
+    font-size: 1.2rem;
+    line-height: 1.2; } }
+@media only screen and (min-width: 421px) and (max-width: 600px) {
+  html {
+    font-size: 10px; }
+
+  .header .wraplogo {
+    width: 25%; }
+
+  .header .heading {
+    width: 75%;
+    font-size: 0.4rem; }
+
+  .main .right p {
+    font-size: 1.5rem; } }
+@media only screen and (max-width: 420px) {
+  html {
+    font-size: 10px; }
+
+  .header .wraplogo {
+    width: 35%; }
+
+  .header .heading {
+    width: 70%; }
+
+  .main .right p {
+    font-size: 1.5rem; } }
 
 /*# sourceMappingURL=styles.css.map */
