@@ -58,6 +58,9 @@ body {
     margin: 0 auto;
 }
 
+
+/* Header */
+
 .header {
     @include flexRow;
     justify-content: space-between;
@@ -102,6 +105,9 @@ body {
         font-size: 3.8rem;
     }
 }
+
+
+/* Main */
 
 .main {
     @include flexRow;
@@ -173,14 +179,12 @@ body {
     }
 }
 
-.clear {
-    clear: both;
-}
-
 .hidden {
     display: none;
-    transition: 2s all;
 }
+
+
+/* Adaptive */
 
 @media only screen and (min-width: 600px) and (max-width: 768px) {
     html {
