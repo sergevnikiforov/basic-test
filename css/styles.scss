@@ -1,268 +1,398 @@
-$color1: #ef9a9a;
-$color2: #cfe2f3;
-$color3: #d9d2e9;
-$wrapperWidth: 1000px;
-$borderLogo: 50px solid #eee;
-$border2Logo: 50px solid $color2;
-$size: 50px;
-@mixin Shadow {
-    -webkit-box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
-    -moz-box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
-    box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
-}
-
-@mixin flexColumn {
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin flexRow {
-    display: flex;
-    flex-direction: row;
-}
-
-@mixin logo {
-    width: 60px;
-    height: 60px;
-    background: $color2;
-}
-
-@mixin rotateLogo ($deg: 20deg) {
-    -webkit-transform: rotate($deg);
-    -moz-transform: rotate($deg);
-    -ms-transform: rotate($deg);
-    transform: rotate($deg);
-}
-
-
-/* General */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-}
-
-body {
-    @include flexColumn;
-    font-family: 'Playfair Display', serif;
-    background-color: lighten($color1, 20%);
-}
-
-.wrapper {
-    @include Shadow;
-    @include flexColumn;
-    max-width: $wrapperWidth;
-    margin: 0 auto;
-}
-
-
-/* Header */
-
-.header {
-    @include flexRow;
-    position: relative;
-    justify-content: space-between;
-    background-color: lighten($color1, 20%);
-    .logo {
-        @include logo;
-        @include rotateLogo;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        text-align: center;
-    }
-    .wraplogo {
-        height: 120px;
-        min-width: 15%;
-    }
-    .logo:before,
-    .logo::after {
-        position: absolute;
-    }
-    .logo:before {
-        @include logo;
-        @include rotateLogo(135deg);
-        content: "";
-        top: 0;
-        left: 0;
-    }
-    .logo::after {
-        @include rotateLogo(-20deg);
-        content: 'logo';
-        top: 40%;
-        left: 30%;
-    }
-    .heading {
-        @include flexColumn;
-        justify-content: center;
-        align-items: center;
-        width: 85%;
-        animation-name: example;
-        animation-duration: 8s;
-    }
-    h1 {
-        font-size: 3.8rem;
-    }
-}
-
-
-/* Main */
-
-.main {
-    @include flexRow;
-    .left {
-        @include flexColumn;
-        justify-content: space-between;
-        width: 25%;
-        background-color: $color2;
-    }
-    .copyright {
-        padding-bottom: 10px;
-        font-size: 1rem;
-        text-align: center;
-        color: grey;
-    }
-    .right {
-        position: relative;
-        padding: 5%;
-        width: 75%;
-        min-height: 70vh;
-        background-color: $color3;
-    }
-    .menu {
-        width: 100%;
-        list-style-type: none;
-    }
-    .menu li {
-        width: 100%;
-        background-color: $color2;
-        border: 1px solid grey;
-        transition: 2s all;
-    }
-    .menu li:hover {
-        background-color: $color3;
-        border-right: none;
-        transition: 2s all;
-    }
-    .menu li a {
-        padding: 10px;
-        display: block;
-        width: 100%;
-        font-size: 2rem;
-        text-decoration: none;
-        color: black;
-    }
-    p {
-        margin-bottom: 10px;
-        font-size: 1rem;
-        line-height: 1.3;
-        text-indent: 2%;
-        color: darkblue;
-        transition: 2s all;
-    }
-    @-webkit-keyframes example {
-        0% {
-            color: black;
-        }
-        50% {
-            color: blue;
-        }
-        100% {
-            color: black;
-        }
-    }
-    @keyframes example {
-        0% {
-            color: black;
-        }
-        50% {
-            color: blue;
-        }
-        100% {
-            color: black;
-        }
-    }
-}
-
-.square {
-    position: absolute;
-    right: -20px;
-    top: -20px;
-    z-index: 10;
-    width: 50px;
-    height: 50px;
-    background: $color2;
-    border: 10px outset lighten($color3, 10%);
-    opacity: .8;
-    transition: 1s all;
-}
-
-.square:hover {
-    background: $color1;
-    opacity: .5;
-    transition: 1s all;
-    transform: rotate(360deg);
-}
-
-.show {
-    display: block;
-    transition: 2s all;
-}
-
-.hidden {
-    display: none;
-    transition: 1s all;
-}
-
-
-/* Adaptive */
-
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-    html {
-        font-size: 12px;
-    }
-    .wrapper {
-        width: 100%;
-    }
-    .main .right {
-        padding: 3%;
-    }
-    .right p {
-        font-size: 1.2rem;
-        line-height: 1.2;
-    }
-}
-
-@media only screen and (min-width: 421px) and (max-width: 600px) {
-    html {
-        font-size: 10px;
-    }
-    .header .wraplogo {
-        width: 25%;
-    }
-    .header .heading {
-        width: 75%;
-        font-size: 0.4rem;
-    }
-    .main .right p {
-        font-size: 1.5rem;
-    }
-}
-
-@media only screen and (max-width: 420px) {
-    html {
-        font-size: 10px;
-    }
-    .header .wraplogo {
-        width: 35%;
-    }
-    .header .heading {
-        width: 70%;
-    }
-    .main .right p {
-        font-size: 1.5rem;
-    }
-}
+            $color1: #ef9a9a;
+            $color2: #cfe2f3;
+            $color3: #d9d2e9;
+            $colorMain: black;
+            $wrapperWidth: 1000px;
+            $borderLogo: 50px solid #eee;
+            $border2Logo: 50px solid $color2;
+            $borderMain: 1px solid lighten($colorMain, 50%);
+            $size: 50px;
+            @mixin Shadow {
+                -webkit-box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
+                -moz-box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
+                box-shadow: 3px 9px 19px -7px rgba(0, 0, 0, 0.62);
+            }
+            
+            @mixin flexColumn {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            @mixin flexRow {
+                display: flex;
+                flex-direction: row;
+            }
+            
+            @mixin logo {
+                width: 60px;
+                height: 60px;
+                background: $color2;
+            }
+            
+            @mixin anim {
+                0% {
+                    color: $colorMain;
+                }
+                50% {
+                    color: blue;
+                }
+                100% {
+                    color: $colorMain;
+                }
+            }
+            
+            @mixin rotateLogo ($deg: 20deg) {
+                -webkit-transform: rotate($deg);
+                -moz-transform: rotate($deg);
+                -ms-transform: rotate($deg);
+                transform: rotate($deg);
+            }
+            /* General */
+            
+            * {
+                box-sizing: border-box;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            body {
+                @include flexColumn;
+                font-family: 'Playfair Display', serif;
+                background-color: lighten($color1, 20%);
+            }
+            
+            .wrapper {
+                @include Shadow;
+                @include flexColumn;
+                max-width: $wrapperWidth;
+                margin: 0 auto;
+            }
+            /* Header */
+            
+            .header {
+                @include flexRow;
+                position: relative;
+                justify-content: space-between;
+                background-color: lighten($color1, 20%);
+                .logo {
+                    @include logo;
+                    @include rotateLogo;
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                }
+                .wraplogo {
+                    height: 120px;
+                    min-width: 15%;
+                }
+                .logo:before,
+                .logo::after {
+                    position: absolute;
+                }
+                .logo:before {
+                    @include logo;
+                    @include rotateLogo(135deg);
+                    content: "";
+                    top: 0;
+                    left: 0;
+                }
+                .logo::after {
+                    @include rotateLogo(-20deg);
+                    content: 'logo';
+                    top: 40%;
+                    left: 30%;
+                }
+                .heading {
+                    @include flexColumn;
+                    justify-content: center;
+                    align-items: center;
+                    width: 85%;
+                    animation-name: example;
+                    animation-duration: 8s;
+                }
+                h1 {
+                    font-size: 3.8rem;
+                }
+            }
+            /* Main */
+            
+            .main {
+                @include flexRow;
+                border: $borderMain;
+                .left {
+                    @include flexColumn;
+                    justify-content: space-between;
+                    width: 25%;
+                    background-color: $color2;
+                }
+                .copyright {
+                    padding-bottom: 10px;
+                    font-size: 1rem;
+                    text-align: center;
+                    color: grey;
+                }
+                .menu {
+                    list-style-type: none;
+                    li {
+                        background-color: $color2;
+                        border-bottom: $borderMain;
+                        border-right: $borderMain;
+                        transition: 2s all;
+                    }
+                    li a {
+                        padding: 10px;
+                        padding-left: 15px;
+                        display: block;
+                        font-size: 2rem;
+                        text-decoration: none;
+                        color: $colorMain;
+                    }
+                    li:hover {
+                        background-color: $color3;
+                        border-right: none;
+                        transition: 2s all;
+                    }
+                }
+                .right {
+                    position: relative;
+                    padding: 4%;
+                    width: 75%;
+                    min-height: 70vh;
+                    background-color: $color3;
+                    p {
+                        margin-bottom: 10px;
+                        font-size: 1rem;
+                        line-height: 1.3;
+                        text-indent: 2%;
+                        color: darkblue;
+                        transition: 2s all;
+                    }
+                }
+            }
+            
+            @-webkit-keyframes example {
+                @include anim;
+            }
+            
+            @keyframes example {
+                @include anim;
+            }
+            
+            .square {
+                position: absolute;
+                right: -20px;
+                top: -20px;
+                z-index: 10;
+                width: 50px;
+                height: 50px;
+                background: $color2;
+                border: 10px outset lighten($color3, 10%);
+                opacity: .8;
+                transition: 1s all;
+            }
+            
+            .square:hover {
+                background: $color1;
+                opacity: .5;
+                transition: 1s all;
+                transform: rotate(360deg);
+            }
+            
+            .show {
+                display: block;
+                transition: 2s all;
+            }
+            
+            .hidden {
+                display: none;
+                transition: 1s all;
+            }
+            /* Adaptive */
+            
+            @media only screen and (min-width: 900px) and (max-width: 1070px) {
+                html {
+                    font-size: 14px;
+                }
+                .wrapper {
+                    width: 94%;
+                }
+                /* Header */
+                .header {
+                    .wraplogo {
+                        height: 110px;
+                    }
+                    h1 {
+                        font-size: 3.8rem;
+                    }
+                }
+                /* Main */
+                .main {
+                    .copyright {
+                        font-size: 1.2rem;
+                    }
+                    .right {
+                        padding: 3%;
+                        p {
+                            margin-bottom: 2%;
+                        }
+                    }
+                }
+            }
+            
+            @media only screen and (max-width: 899px) {
+                html {
+                    font-size: 14px;
+                }
+                .wrapper {
+                    width: 94%;
+                }
+                /* Header */
+                .header {
+                    .wraplogo {
+                        height: 100px;
+                    }
+                    h1 {
+                        font-size: 3.4rem;
+                    }
+                    .square {
+                        width: 45px;
+                        height: 45px;
+                    }
+                }
+                /* Main */
+                .main {
+                    .copyright {
+                        font-size: 1.2rem;
+                    }
+                    .right {
+                        padding: 2%;
+                        p {
+                            margin-bottom: 1%;
+                        }
+                    }
+                }
+                .square {
+                    width: 40px;
+                    height: 40px;
+                }
+                .square:hover {
+                    transform: rotate(180deg);
+                }
+            }
+            
+            @media only screen and (max-width: 768px) {
+                html {
+                    font-size: 14px;
+                }
+                .wrapper {
+                    width: 93%;
+                }
+                /* Header */
+                .header {
+                    .wraplogo {
+                        height: 95px;
+                        width: 18%;
+                    }
+                    .heading {
+                        width: 82%;
+                    }
+                    h1 {
+                        font-size: 2.6rem;
+                    }
+                }
+            }
+            
+            @media only screen and (max-width: 599px) {
+                html {
+                    font-size: 13px;
+                }
+                .wrapper {
+                    width: 90%;
+                }
+                /* Header */
+                .header {
+                    .wraplogo {
+                        height: 90px;
+                        width: 22%;
+                    }
+                    .logo {
+                        top: 10px;
+                        left: 10px;
+                    }
+                    .heading {
+                        width: 78%;
+                    }
+                    h1 {
+                        font-size: 1.9rem;
+                    }
+                }
+                .main {
+                    .menu {
+                        li a {
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+            
+            @media only screen and (max-width: 420px) {
+                html {
+                    font-size: 12px;
+                }
+                .wrapper {
+                    width: 90%;
+                }
+                /* Header */
+                .header {
+                    .wraplogo {
+                        height: 80px;
+                        width: 35%;
+                    }
+                    .heading {
+                        width: 65%;
+                    }
+                    h1 {
+                        font-size: 2rem;
+                    }
+                }
+                /* Main */
+                .main {
+                    .left {
+                        width: 20%;
+                    }
+                    .copyright {
+                        font-size: 1rem;
+                    }
+                    .menu {
+                        li a {
+                            padding: 10px 5px;
+                            font-size: 1.2rem;
+                        }
+                    }
+                    .right {
+                        padding: 3%;
+                        width: 80%;
+                        p {
+                            margin-bottom: 3%;
+                            font-size: 1rem;
+                            line-height: 1.2;
+                            color: navy;
+                        }
+                    }
+                }
+                .square {
+                    right: -10px;
+                    top: -10px;
+                    width: 20px;
+                    height: 20px;
+                    border: 4px outset lighten($color3, 10%);
+                }
+                .square:hover {
+                    background: $color1;
+                    opacity: .5;
+                    transition: 1s all;
+                    transform: rotate(90deg);
+                }
+            }
